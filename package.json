@@ -4,7 +4,8 @@
   "description": "University Registration System",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+     "dev": "node index.html"
   },
   "dependencies": {
     "express": "^4.18.2",
