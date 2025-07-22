@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ระบบสมัครเรียน - มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าพระนครเหนือ</title>
+    <link rel="stylesheet" href="CSS.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>ระบบสมัครเรียน</h1>
+            <p>มหาวิทยาลัยSOS</p>
+        </div>
+
+        <div class="form-container">
+            <form id="registrationForm">
+                <!-- 1. ข้อมูลส่วนบุคคล -->
+                <div class="section">
+                    <h2 class="section-title">1. ข้อมูลส่วนบุคคล</h2>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>คำนำหน้า <span class="required">*</span></label>
+                            <select required>
+                                <option value="">เลือกคำนำหน้า</option>
+                                <option value="นาย">นาย</option>
+                                <option value="นางสาว">นางสาว</option>
+                                <option value="นาง">นาง</option>
+                                <option value="อื่นๆ">อื่นๆ</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>ชื่อ (ภาษาไทย) <span class="required">*</span></label>
+                            <input type="text" required placeholder="กรอกชื่อภาษาไทย" maxlength="50">
+                            <div class="help-text">ใส่ได้ไม่เกิน 50 ตัวอักษร</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>นามสกุล (ภาษาไทย) <span class="required">*</span></label>
+                            <input type="text" required placeholder="กรอกนามสกุลภาษาไทย" maxlength="50">
+                            <div class="help-text">ใส่ได้ไม่เกิน 50 ตัวอักษร</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>First Name (English) <span class="required">*</span></label>
+                            <input type="text" required placeholder="First Name" maxlength="50">
+                            <div class="help-text">Maximum 50 characters</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Last Name (English) <span class="required">*</span></label>
+                            <input type="text" required placeholder="Last Name" maxlength="50">
+                            <div class="help-text">Maximum 50 characters</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>เลขบัตรประชาชน / Passport <span class="required">*</span></label>
+                            <input type="text" required placeholder="1234567890123" maxlength="13" pattern="[0-9]{13}" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+                            <div class="help-text">ใส่ได้เฉพาะตัวเลข 13 หลัก</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>วันเกิด <span class="required">*</span></label>
+                            <div class="date-group">
+                                <select required>
+                                    <option value="">วัน</option>
+                                    <script>
+                                        for(let i=1; i<=31; i++) {
+                                            document.write(`<option value="${i}">${i}</option>`);
+                                        }
+                                    </script>
+                                </select>
+                                <select required>
+                                    <option value="">เดือน</option>
+                                    <option value="1">มกราคม</option>
+                                    <option value="2">กุมภาพันธ์</option>
+                                    <option value="3">มีนาคม</option>
+                                    <option value="4">เมษายน</option>
+                                    <option value="5">พฤษภาคม</option>
+                                    <option value="6">มิถุนายน</option>
+                                    <option value="7">กรกฎาคม</option>
+                                    <option value="8">สิงหาคม</option>
+                                    <option value="9">กันยายน</option>
+                                    <option value="10">ตุลาคม</option>
+                                    <option value="11">พฤศจิกายน</option>
+                                    <option value="12">ธันวาคม</option>
+                                </select>
+                                <select required>
+                                    <option value="">ปี (พ.ศ.)</option>
+                                    <script>
+                                        for(let i=2568; i>=2530; i--) {
+                                            document.write(`<option value="${i}">${i}</option>`);
+                                        }
+                                    </script>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>อายุ <span class="required">*</span></label>
+                            <input type="number" required min="18" max="50" placeholder="อายุ">
+                            <div class="help-text">ต้องมีอายุ 18-50 ปี</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>เพศ <span class="required">*</span></label>
+                            <div class="radio-group">
+                                <div class="radio-item">
+                                    <input type="radio" id="male" name="gender" value="male" required>
+                                    <label for="male">ชาย</label>
+                                </div>
+                                <div class="radio-item">
+                                    <input type="radio" id="female" name="gender" value="female" required>
+                                    <label for="female">หญิง</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>ศาสนา <span class="required">*</span></label>
+                            <select required>
+                                <option value="">เลือกศาสนา</option>
+                                <option value="buddhist">พุทธ</option>
+                                <option value="christian">คริสต์</option>
+                                <option value="islam">อิสลาม</option>
+                                <option value="other">อื่นๆ</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>สัญชาติ <span class="required">*</span></label>
+                            <input type="text" required placeholder="ไทย" value="ไทย" maxlength="30">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>เชื้อชาติ <span class="required">*</span></label>
+                            <input type="text" required placeholder="ไทย" value="ไทย" maxlength="30">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>สถานะสมรส <span class="required">*</span></label>
+                            <select required>
+                                <option value="">เลือกสถานะ</option>
+                                <option value="single">โสด</option>
+                                <option value="married">สมรส</option>
+                                <option value="divorced">หย่าร้าง</option>
+                                <option value="widowed">หม้าย</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>กลุ่มเลือด <span class="required">*</span></label>
+                            <select required>
+                                <option value="">เลือกกลุ่มเลือด</option>
+                                <option value="A">A</option>
+                                <option value="B">B</option>
+                                <option value="AB">AB</option>
+                                <option value="O">O</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <!-- Submit Section -->
+                <div class="submit-section">
+                    <h3 style="margin-bottom: 20px; color: #2d3748;">ยืนยันการสมัคร</h3>
+                    <p style="margin-bottom: 25px; color: #718096;">กรุณาตรวจสอบข้อมูลให้ครบถ้วนก่อนกดยืนยัน</p>
+                    
+                    <button type="submit" class="submit-btn" onclick="submitForm()">
+                        บันทึกข้อมูลและส่งใบสมัคร
+                    </button>
+                    
+                    <button type="button" class="reset-btn" onclick="resetForm()">
+                        ล้างข้อมูลทั้งหมด
+                    </button>
+                    
+                    
+                </div><br>
+                
+                
+            </form>
+        </div>
+    </div>
+
+    <script>
+        async function submitForm() {
+    const form = document.getElementById('registrationForm');
+    const formData = new FormData(form);
+    
+    // ตรวจสอบ required fields และเงื่อนไขพิเศษ
+    const idCard = form.querySelector('input[placeholder="1234567890123"]').value;
+    const age = parseInt(form.querySelector('input[placeholder="อายุ"]').value);
+    
+    // ตรวจสอบเลขบัตรประชาชน
+    if (idCard && idCard.length !== 13) {
+        alert('⚠️ เลขบัตรประชาชนต้องเป็นตัวเลข 13 หลักเท่านั้น');
+        return;
+    }
+    
+    // ตรวจสอบอายุ
+    if (age && (age < 18 || age > 50)) {
+        alert('⚠️ อายุต้องอยู่ในช่วง 18-50 ปี');
+        return;
+    }
+    
+    if (!form.checkValidity()) {
+        alert('⚠️ กรุณากรอกข้อมูลให้ครบถ้วนและถูกต้อง\n\n📝 ตรวจสอบ:\n• ช่องที่มีเครื่องหมาย * สีแดง\n• ชื่อ-นามสกุล ไม่เกิน 50 ตัวอักษร\n• เลขบัตรประชาชน 13 หลัก\n• อายุ 18-50 ปี');
+        
+        // หา field แรกที่ไม่ถูกต้องและเลื่อนไปที่ตำแหน่งนั้น
+        const firstInvalid = form.querySelector(':invalid');
+        if (firstInvalid) {
+            firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            firstInvalid.focus();
+        }
+        return;
+    }
+    
+    // แสดงข้อความยืนยัน
+    if (!confirm('คุณต้องการบันทึกข้อมูลและส่งใบสมัครหรือไม่?\n\n✅ ข้อมูลทั้งหมดถูกต้องและครบถ้วนแล้ว')) {
+        return;
+    }
+    
+    // แสดง loading
+    const submitBtn = document.querySelector('.submit-btn');
+    const originalText = submitBtn.textContent;
+    submitBtn.disabled = true;
+    submitBtn.textContent = '⏳ กำลังบันทึกข้อมูล...';
+    
+    try {
+        // รวบรวมข้อมูลจากฟอร์ม
+        const formData = collectFormData(form);
+        
+        // ส่งข้อมูลไปยัง server
+        const response = await fetch('/submit-registration', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData)
+        });
+        
+        const result = await response.json();
+        
+        if (result.success) {
+            // แสดงข้อความสำเร็จ
+            alert(`🎉 บันทึกข้อมูลเรียบร้อยแล้ว!\n\n` +
+                  `✅ ข้อมูลของคุณได้ถูกส่งไปยังระบบแล้ว\n` +
+                  `📋 หมายเลขใบสมัคร: ${result.registrationId}\n` +
+                  `📅 เวลา: ${new Date(result.timestamp).toLocaleString('th-TH')}\n` +
+                  `📧 คุณจะได้รับอีเมลยืนยันในอีกสักครู่`);
+            
+            // ล้างฟอร์มหลังสำเร็จ
+            form.reset();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            window.location.href = "/Login.html";
+        } else {
+            throw new Error(result.message || 'เกิดข้อผิดพลาดไม่ทราบสาเหตุ');
+        }
+        
+    } catch (error) {
+        console.error('Error:', error);
+        alert(`❌ เกิดข้อผิดพลาดในการบันทึกข้อมูล\n\n` +
+              `📝 รายละเอียด: ${error.message}\n` +
+              `🔄 กรุณาลองใหม่อีกครั้ง หรือติดต่อเจ้าหน้าที่`);
+    } finally {
+        // คืนค่าปุ่ม
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalText;
+    }
+}
+
+// ฟังก์ชันรวบรวมข้อมูลจากฟอร์ม
+function collectFormData(form) {
+    const data = {};
+    
+    // ข้อมูลจาก input และ select
+    const inputs = form.querySelectorAll('input[required], select[required]');
+    inputs.forEach(input => {
+        if (input.type === 'radio') {
+            if (input.checked) {
+                data[input.name] = input.value;
+            }
+        } else {
+            data[input.name || input.placeholder || 'unnamed'] = input.value;
+        }
+    });
+    
+    // รวบรวมข้อมูลตาม placeholder หรือ label
+    const prefix = form.querySelector('select option[selected], select[required] option:checked')?.value || 
+                  form.querySelector('select[required]').value;
+    const thaiFirstName = form.querySelector('input[placeholder="กรอกชื่อภาษาไทย"]').value;
+    const thaiLastName = form.querySelector('input[placeholder="กรอกนามสกุลภาษาไทย"]').value;
+    const engFirstName = form.querySelector('input[placeholder="First Name"]').value;
+    const engLastName = form.querySelector('input[placeholder="Last Name"]').value;
+    const idCard = form.querySelector('input[placeholder="1234567890123"]').value;
+    const age = form.querySelector('input[placeholder="อายุ"]').value;
+    
+    // วันเกิด
+    const birthDay = form.querySelectorAll('select')[1].value; // วัน
+    const birthMonth = form.querySelectorAll('select')[2].value; // เดือน
+    const birthYear = form.querySelectorAll('select')[3].value; // ปี
+    
+    return {
+        prefix: prefix,
+        thaiFirstName: thaiFirstName,
+        thaiLastName: thaiLastName,
+        engFirstName: engFirstName,
+        engLastName: engLastName,
+        idCard: idCard,
+        birthDate: {
+            day: birthDay,
+            month: birthMonth,
+            year: birthYear
+        },
+        age: parseInt(age),
+        gender: form.querySelector('input[name="gender"]:checked')?.value,
+        religion: form.querySelectorAll('select')[4].value,
+        nationality: form.querySelector('input[value="ไทย"]').value,
+        ethnicity: form.querySelectorAll('input[value="ไทย"]')[1]?.value,
+        maritalStatus: form.querySelectorAll('select')[5].value,
+        bloodType: form.querySelectorAll('select')[6].value
+    };
+}
+    </script>

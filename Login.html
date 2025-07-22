@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เข้าสู่ระบบ</title>
+    <link rel="stylesheet" href="CSS1.css">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-header">
+            <h1>เข้าสู่ระบบ</h1>
+            <p>กรุณาใส่ข้อมูลเพื่อเข้าสู่ระบบ</p>
+        </div>
+
+        <div class="error-message" id="errorMessage"></div>
+        <div class="success-message" id="successMessage"></div>
+
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="username">ชื่อผู้ใช้ (ภาษาอังกฤษ):</label>
+                <input type="text" id="username" name="username" required  placeholder="กรอกชื่อภาษาอังกฤษ">
+            </div>
+
+            <div class="form-group">
+                <label for="password">เลขบัตรประชาชน:</label>
+                <input type="text" id="password" name="password" required maxlength="13" pattern="[0-9]*" placeholder="กรอกเลขบัตรประชาชน 13 หลัก">
+            </div>
+            <label for="username"><a href="index.html">สมัคร</a></label><br><br>
+            <button type="submit" class="submit-btn">เข้าสู่ระบบ</button>
+        </form>
+    </div>
+
+    <script>
+        let users = [];
+
+        // ฟังก์ชันโหลดข้อมูลจากไฟล์ JSON
+        async function loadUsersFromJSON() {
+            try {
+                const response = await fetch('/data/registrations.json');
+                if (response.ok) {
+                    users = await response.json();
+                    console.log('โหลดข้อมูลผู้ใช้จาก registrations.json สำเร็จ');
+                    console.log(`พบข้อมูลผู้ใช้ ${users.registrations.length} คน`);
+                } else {
+                    throw new Error('ไม่สามารถโหลดไฟล์ registrations.json ได้');
+                }
+            } catch (error) {
+                console.error('เกิดข้อผิดพลาด:', error.message);
+                showMessage('ไม่สามารถโหลดไฟล์ registrations.json ได้ กรุณาตรวจสอบไฟล์');
+                users = [];
+            }
+        }
+
+        // ฟังก์ชันตรวจสอบการเข้าสู่ระบบ
+        function validateLogin(username, password) {
+            if (users.length === 0) {
+                return null;
+            }
+            
+            return users.registrations.find(user => 
+                user.personalInfo.engFirstName && user.personalInfo.idCard && 
+                user.personalInfo.engFirstName.toLowerCase() === username.toLowerCase() && 
+                user.personalInfo.idCard === password
+            );
+        }
+
+        // ฟังก์ชันแสดงข้อความ
+        function showMessage(message, isError = true) {
+            const errorDiv = document.getElementById('errorMessage');
+            const successDiv = document.getElementById('successMessage');
+            
+            if (isError) {
+                errorDiv.textContent = message;
+                errorDiv.style.display = 'block';
+                successDiv.style.display = 'none';
+            } else {
+                successDiv.textContent = message;
+                successDiv.style.display = 'block';
+                errorDiv.style.display = 'none';
+            }
+            
+            // ซ่อนข้อความหลังจาก 3 วินาที
+            setTimeout(() => {
+                errorDiv.style.display = 'none';
+                successDiv.style.display = 'none';
+            }, 3000);
+        }
+
+        // เมื่อโหลดหน้าเว็บเสร็จ
+        document.addEventListener('DOMContentLoaded', async () => {
+            await loadUsersFromJSON();
+            
+            // จัดการการ submit form
+            document.getElementById('loginForm').addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                const username = document.getElementById('username').value.trim();
+                const password = document.getElementById('password').value;
+                
+                // ตรวจสอบว่าโหลดข้อมูลผู้ใช้แล้วหรือยัง
+                if (users.length === 0) {
+                    showMessage('ไม่พบข้อมูลผู้ใช้ กรุณาตรวจสอบไฟล์ registrations.json');
+                    return;
+                }
+                
+                // ตรวจสอบว่ากรอกข้อมูลครบหรือไม่
+                if (!username || !password) {
+                    showMessage('กรุณากรอกชื่อผู้ใช้และเลขบัตรประชาชน');
+                    return;
+                }
+                
+                // ตรวจสอบการเข้าสู่ระบบ
+                const user = validateLogin(username, password);
+                console.log(user);
+                
+                if (user) {
+                    showMessage(`เข้าสู่ระบบสำเร็จ! ยินดีต้อนรับ ${user.personalInfo.engFirstName}`, false);
+                    
+                    // หน่วงเวลา 2 วินาที แล้วไปหน้าถัดไป
+                    setTimeout(() => {
+                        // เปลี่ยนไปหน้าหลักหรือหน้าที่ต้องการ
+                        // window.location.href = 'dashboard.html';
+                        alert('เข้าสู่ระบบสำเร็จ!');
+                    }, 2000);
+                    
+                } else {
+                    showMessage('ชื่อผู้ใช้หรือเลขบัตรประชาชนไม่ถูกต้อง');
+                }
+                
+                // เคลียร์รหัสผ่าน
+                document.getElementById('password').value = '';
+            });
+        });
+
+        // เพิ่ม animation เมื่อ focus input
+        const inputs = document.querySelectorAll('input');
+        inputs.forEach(input => {
+            input.addEventListener('focus', function() {
+                this.style.transform = 'scale(1.02)';
+            });
+            
+            input.addEventListener('blur', function() {
+                this.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,179 @@
+{
+  "registrations": [
+    {
+      "id": "KMUTNB943427",
+      "timestamp": "2025-07-20T10:22:23.427Z",
+      "personalInfo": {
+        "prefix": "นาย",
+        "thaiFirstName": "ธีรดนย์",
+        "thaiLastName": "ศรีวารี",
+        "engFirstName": "teeradol",
+        "engLastName": "Srivaree",
+        "idCard": "1234567890123",
+        "birthDate": {
+          "day": "20",
+          "month": "7",
+          "year": "2546"
+        },
+        "age": 22,
+        "gender": "male",
+        "religion": "buddhist",
+        "nationality": "ไทย",
+        "ethnicity": "ไทย",
+        "maritalStatus": "single",
+        "bloodType": "B"
+      },
+      "status": "pending"
+    },
+    {
+      "id": "KMUTNB440637",
+      "timestamp": "2025-07-20T11:37:20.637Z",
+      "personalInfo": {
+        "prefix": "นางสาว",
+        "thaiFirstName": "น้อต",
+        "thaiLastName": "จิราเมธ",
+        "engFirstName": "Not",
+        "engLastName": "Jiramet",
+        "idCard": "1111111111111",
+        "birthDate": {
+          "day": "22",
+          "month": "7",
+          "year": "2546"
+        },
+        "age": 22,
+        "gender": "male",
+        "religion": "buddhist",
+        "nationality": "ไทย",
+        "ethnicity": "ไทย",
+        "maritalStatus": "widowed",
+        "bloodType": "AB"
+      },
+      "status": "pending"
+    },
+    {
+      "id": "KMUTNB672585",
+      "timestamp": "2025-07-20T11:41:12.585Z",
+      "personalInfo": {
+        "prefix": "นาย",
+        "thaiFirstName": "ธีร",
+        "thaiLastName": "ๆไำๆไำๆไำ",
+        "engFirstName": "asdasd",
+        "engLastName": "zxcaseq",
+        "idCard": "1111111111111",
+        "birthDate": {
+          "day": "20",
+          "month": "2",
+          "year": "2550"
+        },
+        "age": 30,
+        "gender": "male",
+        "religion": "buddhist",
+        "nationality": "ไทย",
+        "ethnicity": "ไทย",
+        "maritalStatus": "married",
+        "bloodType": "A"
+      },
+      "status": "pending"
+    },
+    {
+      "id": "KMUTNB794616",
+      "timestamp": "2025-07-20T11:43:14.616Z",
+      "personalInfo": {
+        "prefix": "นาย",
+        "thaiFirstName": "เทส",
+        "thaiLastName": "เทส",
+        "engFirstName": "test",
+        "engLastName": "test",
+        "idCard": "2222222222222",
+        "birthDate": {
+          "day": "20",
+          "month": "1",
+          "year": "2549"
+        },
+        "age": 30,
+        "gender": "male",
+        "religion": "buddhist",
+        "nationality": "ไทย",
+        "ethnicity": "ไทย",
+        "maritalStatus": "single",
+        "bloodType": "AB"
+      },
+      "status": "pending"
+    },
+    {
+      "id": "KMUTNB845449",
+      "timestamp": "2025-07-20T11:44:05.449Z",
+      "personalInfo": {
+        "prefix": "นาย",
+        "thaiFirstName": "เทส",
+        "thaiLastName": "เทส",
+        "engFirstName": "test",
+        "engLastName": "test",
+        "idCard": "1234567890122",
+        "birthDate": {
+          "day": "20",
+          "month": "12",
+          "year": "2549"
+        },
+        "age": 30,
+        "gender": "male",
+        "religion": "buddhist",
+        "nationality": "ไทย",
+        "ethnicity": "ไทย",
+        "maritalStatus": "single",
+        "bloodType": "A"
+      },
+      "status": "pending"
+    },
+    {
+      "id": "KMUTNB919328",
+      "timestamp": "2025-07-20T11:45:19.328Z",
+      "personalInfo": {
+        "prefix": "นาย",
+        "thaiFirstName": "เทส",
+        "thaiLastName": "เทส",
+        "engFirstName": "test",
+        "engLastName": "test",
+        "idCard": "3333333333333",
+        "birthDate": {
+          "day": "19",
+          "month": "1",
+          "year": "2550"
+        },
+        "age": 23,
+        "gender": "male",
+        "religion": "buddhist",
+        "nationality": "ไทย",
+        "ethnicity": "ไทย",
+        "maritalStatus": "single",
+        "bloodType": "B"
+      },
+      "status": "pending"
+    },
+    {
+      "id": "KMUTNB027660",
+      "timestamp": "2025-07-20T11:47:07.660Z",
+      "personalInfo": {
+        "prefix": "นาย",
+        "thaiFirstName": "เทส",
+        "thaiLastName": "เทส",
+        "engFirstName": "test",
+        "engLastName": "test",
+        "idCard": "5555555555555",
+        "birthDate": {
+          "day": "20",
+          "month": "7",
+          "year": "2546"
+        },
+        "age": 22,
+        "gender": "female",
+        "religion": "buddhist",
+        "nationality": "ไทย",
+        "ethnicity": "ไทย",
+        "maritalStatus": "single",
+        "bloodType": "B"
+      },
+      "status": "pending"
+    }
+  ]
+}
